@@ -23,7 +23,9 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { SunIcon } from '@/components/icons/SunIcon';
 import { MoonIcon } from '@/components/icons/MoonIcon';
-import { Suspense } from 'react';
+import { Suspense }  from 'react';
+import { useMemo } from 'react';
+import Image from 'next/image'; // Import Image component
 
 interface MenuItem {
   name: string;
@@ -38,21 +40,21 @@ const Navigation: React.FC = () => {
   const router = useRouter();
   const { activeTheme, setTheme } = useAppearance();
 
-  // Updated menuItems to match your actual folder structure
-  const menuItems: MenuItem[] = [
+  // Memoize menuItems to prevent unnecessary recreations
+  const menuItems: MenuItem[] = useMemo(() => [
     { name: "About", href: "/application/about" },
     { name: "Blog", href: "/application/blog" },
     { name: "Contact", href: "/application/contact" },
     { name: "Services", href: "/application/services" },
     { name: "Calculator", href: "/application/calculator" }
-  ];
+  ], []);
 
   // Prefetch all routes on component mount
   React.useEffect(() => {
     menuItems.forEach((item) => {
       router.prefetch(item.href);
     });
-  }, [router]);
+  }, [router, menuItems]); // Added menuItems to the dependency array
 
   const handleSignIn = (): void => {
     setModalId("sign-in-method");
@@ -72,7 +74,6 @@ const Navigation: React.FC = () => {
   };
 
   const isActivePath = (path: string): boolean => {
-    // Handle both exact matches and nested routes
     return pathname === path || pathname?.startsWith(`${path}/`);
   };
 
@@ -109,7 +110,13 @@ const Navigation: React.FC = () => {
         <NavbarContent className="sm:hidden pr-3" justify="center">
           <NavbarBrand>
             <Link href="/" className="font-bold text-inherit">
-              <img className='w-16 sm:w-16  md:w-20' src="https://www.apnelec.co.uk/Portals/0/apnelec-Logo-02.png" alt="apnelec" />
+              <Image // Use Image component here
+                className='w-16 sm:w-16 md:w-20'
+                src="https://www.apnelec.co.uk/Portals/0/apnelec-Logo-02.png"
+                alt="apnelec"
+                width={80} // Set width based on design
+                height={80} // Set height based on design
+              />
             </Link>
           </NavbarBrand>
         </NavbarContent>
@@ -117,7 +124,13 @@ const Navigation: React.FC = () => {
         <NavbarContent className="hidden sm:flex gap-5" justify="center">
           <NavbarBrand>
             <Link href="/" className="font-bold text-inherit">
-              <img className='w-16 sm:w-16 md:w-20 ' src="https://www.apnelec.co.uk/Portals/0/apnelec-Logo-02.png" alt="apnelec" />
+              <Image // Use Image component here
+                className='w-16 sm:w-16 md:w-20'
+                src="https://www.apnelec.co.uk/Portals/0/apnelec-Logo-02.png"
+                alt="apnelec"
+                width={80} // Set width based on design
+                height={80} // Set height based on design
+              />
             </Link>
           </NavbarBrand>
           {menuItems.map((item) => (
@@ -135,7 +148,6 @@ const Navigation: React.FC = () => {
           ))}
         </NavbarContent>
 
-        {/* Rest of the navbar content remains the same */}
         <NavbarContent justify="end">
           <NavbarItem>
             <Switch
@@ -159,7 +171,6 @@ const Navigation: React.FC = () => {
                   size="sm"
                   alt={`${currentUser.lastName}`}
                 />
-
               </DropdownTrigger>
               <DropdownMenu aria-label="Profile Actions" variant="flat">
                 <DropdownItem key="profile" className="h-14 gap-2">

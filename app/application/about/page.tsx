@@ -11,7 +11,7 @@ export default function AboutPage() {
           <CardBody>
             <h2 className="text-2xl font-bold mb-4">Our Story</h2>
             <p className="text-gray-600 mb-4">
-              Founded in 2020, we've been at the forefront of digital innovation,
+              Founded in 2020, we&apos;ve been at the forefront of digital innovation,
               helping businesses transform their ideas into reality.
             </p>
             <p className="text-gray-600">

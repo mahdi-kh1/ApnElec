@@ -55,6 +55,7 @@ export type SignOutForm = {
   refreshToken: string;
 };
 
+// User Profile Model
 export type UserProfileModel = {
   id: string;
   firstName: string;
@@ -68,10 +69,18 @@ export type UserProfileModel = {
   roles: string[];
 };
 
+// Subscription Model
+export interface SubscriptionType {
+  plan: string; // e.g., 'Basic', 'Pro', etc.
+  expires: Date; // Subscription expiration date
+  daysLeft?: number; // Optional days left until expiration
+}
+// User Session Model with Subscription
 export type UserSessionModel = UserProfileModel & {
   tokenType: string;
   accessToken: string;
   accessTokenExpiresAt: Date;
   refreshToken: string;
   refreshTokenExpiresAt: Date;
+  subscription?: SubscriptionType; // Optional subscription property
 };

@@ -3,10 +3,10 @@
 import React from 'react';
 import { Button, Tooltip, Avatar, Progress } from "@nextui-org/react";
 import Link from 'next/link';
-import { 
-  LayoutDashboard, 
-  Settings, 
-  Users, 
+import {
+  LayoutDashboard,
+  Settings,
+  Users,
   CreditCard,
   Folder,
   Calendar,
@@ -19,6 +19,7 @@ import {
 import { usePathname } from 'next/navigation';
 import { useAuthentication } from "@/states";
 import { useModalController } from "@/modals";
+import Image from 'next/image'; // Import the Image component
 
 interface SidebarItemProps {
   href: string;
@@ -26,10 +27,10 @@ interface SidebarItemProps {
   label: string;
 }
 
-const DashboardSidebar = ({ 
-  isOpen, 
-  onClose 
-}: { 
+const DashboardSidebar = ({
+  isOpen,
+  onClose
+}: {
   isOpen: boolean;
   onClose: () => void;
 }) => {
@@ -73,7 +74,7 @@ const DashboardSidebar = ({
     <>
       {/* Overlay for mobile */}
       {isOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/50 z-40 lg:hidden"
           onClick={onClose}
         />
@@ -90,9 +91,11 @@ const DashboardSidebar = ({
         <div className="h-full flex flex-col">
           <div className="p-4 border-b border-divider flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-2">
-              <img 
-                src="https://www.apnelec.co.uk/Portals/0/apnelec-Logo-02.png" 
-                alt="ApnElec Logo" 
+              <Image
+                src="https://www.apnelec.co.uk/Portals/0/apnelec-Logo-02.png"
+                alt="ApnElec Logo"
+                width={32} // Specify the width
+                height={32} // Specify the height
                 className="w-8 h-8"
               />
               <span className="font-bold text-xl">ApnElec</span>
@@ -112,11 +115,10 @@ const DashboardSidebar = ({
               <Link key={item.href} href={item.href} onClick={onClose}>
                 <Button
                   fullWidth
-                  className={`justify-start ${
-                    pathname === item.href
+                  className={`justify-start ${pathname === item.href
                       ? 'bg-primary text-primary-foreground'
                       : 'bg-transparent hover:bg-default-100'
-                  }`}
+                    }`}
                   startContent={item.icon}
                   variant={pathname === item.href ? "solid" : "light"}
                 >
@@ -135,15 +137,17 @@ const DashboardSidebar = ({
                     <span className="text-sm font-medium">Pro Plan</span>
                   </div>
                   <span className="text-xs text-default-500">
-                    {currentUser.subscription.daysLeft} days left
+                    {currentUser.subscription.daysLeft !== undefined ? `${currentUser.subscription.daysLeft} days left` : "Unknown days left"}
                   </span>
                 </div>
-                <Progress 
-                  size="sm"
-                  value={(currentUser.subscription.daysLeft / 30) * 100}
-                  color="warning"
-                  className="max-w-full"
-                />
+                {currentUser.subscription.daysLeft !== undefined && (
+                  <Progress
+                    size="sm"
+                    value={(currentUser.subscription.daysLeft / 30) * 100}
+                    color="warning"
+                    className="max-w-full"
+                  />
+                )}
               </div>
             ) : (
               <Button
@@ -157,6 +161,7 @@ const DashboardSidebar = ({
               </Button>
             )}
           </div>
+
         </div>
       </aside>
     </>
