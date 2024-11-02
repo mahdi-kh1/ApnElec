@@ -51,7 +51,7 @@ const TestimonialsSection: React.FC = () => {
                   {renderStars(testimonial.rating)}
                 </div>
                 <p className="text-gray-600 mb-6 italic">
-                  "{testimonial.content}"
+                  &quot;{testimonial.content}&quot; {/* Escape the quotes */}
                 </p>
                 <div className="mt-auto">
                   <p className="font-semibold">{testimonial.name}</p>

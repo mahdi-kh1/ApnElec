@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '@nextui-org/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import fs from 'fs';
-import path from 'path';
+import Image from 'next/image'; // Import the Image component
 
 const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -15,7 +14,7 @@ const HeroSlider = () => {
       url: "#"
     },
     {
-      image: "	https://www.apnelec.co.uk/Portals/0/LayerGalleryPro/uploads/2019/8/30/slide-bg-01.jpg",
+      image: "https://www.apnelec.co.uk/Portals/0/LayerGalleryPro/uploads/2019/8/30/slide-bg-01.jpg",
       title: "DOMESTIC ELECTRICAL SERVICES",
       description: "APN Elec can help you make sure that your home is safe for yourself and your loved ones and can provide all the certification for electrical work you will need when you come to sell or rent your home.",
       url: "#"
@@ -48,13 +47,14 @@ const HeroSlider = () => {
       {slides.map((slide, index) => (
         <div
           key={index}
-          className={`absolute w-full h-full transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
+          className={`absolute w-full h-full transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
         >
-          <img
+          <Image
             src={slide.image}
             alt={slide.title}
-            className="w-full h-full object-cover"
+            layout="fill" // Use fill layout to cover the parent element
+            objectFit="cover" // Cover the container while maintaining aspect ratio
+            className="w-full h-full"
           />
           <div className="absolute inset-0 bg-black bg-opacity-40">
             <div className="container mx-auto h-full flex items-center px-4">
