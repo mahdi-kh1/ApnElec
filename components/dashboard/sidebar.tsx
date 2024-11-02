@@ -92,7 +92,7 @@ const DashboardSidebar = ({
           <div className="p-4 border-b border-divider flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-2">
               <Image
-                src="https://www.apnelec.co.uk/Portals/0/apnelec-Logo-02.png"
+                src="/apnelec-ev-logo.png"
                 alt="ApnElec Logo"
                 width={32} // Specify the width
                 height={32} // Specify the height
