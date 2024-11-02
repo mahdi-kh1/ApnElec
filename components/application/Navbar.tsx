@@ -112,7 +112,7 @@ const Navigation: React.FC = () => {
             <Link href="/" className="font-bold text-inherit">
               <Image // Use Image component here
                 className='w-16 sm:w-16 md:w-20'
-                src="https://www.apnelec.co.uk/Portals/0/apnelec-Logo-02.png"
+                src="/apnelec-ev-logo.png"
                 alt="apnelec"
                 width={80} // Set width based on design
                 height={80} // Set height based on design
@@ -126,7 +126,7 @@ const Navigation: React.FC = () => {
             <Link href="/" className="font-bold text-inherit">
               <Image // Use Image component here
                 className='w-16 sm:w-16 md:w-20'
-                src="https://www.apnelec.co.uk/Portals/0/apnelec-Logo-02.png"
+                src="/apnelec-ev-logo.png"
                 alt="apnelec"
                 width={80} // Set width based on design
                 height={80} // Set height based on design

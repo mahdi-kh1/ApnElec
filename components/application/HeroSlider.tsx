@@ -8,19 +8,19 @@ const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slides] = useState([
     {
-      image: "https://www.apnelec.co.uk/Portals/0/LayerGalleryPro/uploads/2023/6/18/Slide-Solar.jpg",
+      image: "/Slide-Solar.jpg",
       title: "Let's Go Solar Together",
       description: "APN Elec is a local business specialising in Solar PV installation and battery storage.",
       url: "#"
     },
     {
-      image: "https://www.apnelec.co.uk/Portals/0/LayerGalleryPro/uploads/2019/8/30/slide-bg-01.jpg",
+      image: "/slide-bg-01.jpg",
       title: "DOMESTIC ELECTRICAL SERVICES",
       description: "APN Elec can help you make sure that your home is safe for yourself and your loved ones and can provide all the certification for electrical work you will need when you come to sell or rent your home.",
       url: "#"
     },
     {
-      image: "https://www.apnelec.co.uk/Portals/0/LayerGalleryPro/uploads/2019/9/5/slide-bg-02.jpg",
+      image: "/slide-bg-02.jpg",
       title: "COMMERCIAL ELECTRICAL SERVICES",
       description: "If you require a reliable trustworthy and qualified electrician APN Elec is located in the Brighton and Hove area and servicing both East and West Sussex.",
       url: "#"
