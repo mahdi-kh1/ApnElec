@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <PropertyGroup>
+    <PackageJsonName Condition="$(PackageJsonName) == ''">apn-elec</PackageJsonName>
+    <PackageJsonVersion Condition="$(PackageJsonVersion) == ''">0.1.0</PackageJsonVersion>
+    <PackageJsonPrivate Condition="$(PackageJsonPrivate) == ''">true</PackageJsonPrivate>
+    <PackageJsonScriptsDev Condition="$(PackageJsonScriptsDev) == ''">next dev -p 3497</PackageJsonScriptsDev>
+    <PackageJsonScriptsBuild Condition="$(PackageJsonScriptsBuild) == ''">next build</PackageJsonScriptsBuild>
+    <PackageJsonScriptsStart Condition="$(PackageJsonScriptsStart) == ''">next start -p 3497</PackageJsonScriptsStart>
+    <PackageJsonScriptsLint Condition="$(PackageJsonScriptsLint) == ''">next lint</PackageJsonScriptsLint>
+    <PackageJsonScriptsFormatCheck Condition="$(PackageJsonScriptsFormatCheck) == ''">prettier --check .</PackageJsonScriptsFormatCheck>
+    <PackageJsonScriptsFormat Condition="$(PackageJsonScriptsFormat) == ''">prettier --write .</PackageJsonScriptsFormat>
+    <PackageJsonDependenciesIconifyIconsFlatColorIcons Condition="$(PackageJsonDependenciesIconifyIconsFlatColorIcons) == ''">1.2.5</PackageJsonDependenciesIconifyIconsFlatColorIcons>
+    <PackageJsonDependenciesIconifyIconsLogos Condition="$(PackageJsonDependenciesIconifyIconsLogos) == ''">1.2.36</PackageJsonDependenciesIconifyIconsLogos>
+    <PackageJsonDependenciesNextuiOrgButton Condition="$(PackageJsonDependenciesNextuiOrgButton) == ''">2.0.37</PackageJsonDependenciesNextuiOrgButton>
+    <PackageJsonDependenciesNextuiOrgInput Condition="$(PackageJsonDependenciesNextuiOrgInput) == ''">2.2.4</PackageJsonDependenciesNextuiOrgInput>
+    <PackageJsonDependenciesNextuiOrgLink Condition="$(PackageJsonDependenciesNextuiOrgLink) == ''">2.0.34</PackageJsonDependenciesNextuiOrgLink>
+    <PackageJsonDependenciesNextuiOrgModal Condition="$(PackageJsonDependenciesNextuiOrgModal) == ''">2.0.39</PackageJsonDependenciesNextuiOrgModal>
+    <PackageJsonDependenciesNextuiOrgReact Condition="$(PackageJsonDependenciesNextuiOrgReact) == ''">^2.4.8</PackageJsonDependenciesNextuiOrgReact>
+    <PackageJsonDependenciesNextuiOrgSystem Condition="$(PackageJsonDependenciesNextuiOrgSystem) == ''">2.2.5</PackageJsonDependenciesNextuiOrgSystem>
+    <PackageJsonDependenciesNextuiOrgTheme Condition="$(PackageJsonDependenciesNextuiOrgTheme) == ''">2.2.9</PackageJsonDependenciesNextuiOrgTheme>
+    <PackageJsonDependenciesAxios Condition="$(PackageJsonDependenciesAxios) == ''">1.7.4</PackageJsonDependenciesAxios>
+    <PackageJsonDependenciesClsx Condition="$(PackageJsonDependenciesClsx) == ''">2.1.1</PackageJsonDependenciesClsx>
+    <PackageJsonDependenciesFramerMotion Condition="$(PackageJsonDependenciesFramerMotion) == ''">^11.3.30</PackageJsonDependenciesFramerMotion>
+    <PackageJsonDependenciesLodash Condition="$(PackageJsonDependenciesLodash) == ''">4.17.21</PackageJsonDependenciesLodash>
+    <PackageJsonDependenciesLucideReact Condition="$(PackageJsonDependenciesLucideReact) == ''">^0.454.0</PackageJsonDependenciesLucideReact>
+    <PackageJsonDependenciesNext Condition="$(PackageJsonDependenciesNext) == ''">^14.1.0</PackageJsonDependenciesNext>
+    <PackageJsonDependenciesNextThemes Condition="$(PackageJsonDependenciesNextThemes) == ''">0.3.0</PackageJsonDependenciesNextThemes>
+    <PackageJsonDependenciesPQueue Condition="$(PackageJsonDependenciesPQueue) == ''">8.0.1</PackageJsonDependenciesPQueue>
+    <PackageJsonDependenciesQueryString Condition="$(PackageJsonDependenciesQueryString) == ''">9.1.0</PackageJsonDependenciesQueryString>
+    <PackageJsonDependenciesReact Condition="$(PackageJsonDependenciesReact) == ''">18</PackageJsonDependenciesReact>
+    <PackageJsonDependenciesReactDom Condition="$(PackageJsonDependenciesReactDom) == ''">18</PackageJsonDependenciesReactDom>
+    <PackageJsonDependenciesReactHookForm Condition="$(PackageJsonDependenciesReactHookForm) == ''">7.53.0</PackageJsonDependenciesReactHookForm>
+    <PackageJsonDependenciesSonner Condition="$(PackageJsonDependenciesSonner) == ''">1.5.0</PackageJsonDependenciesSonner>
+    <PackageJsonDependenciesTailwindMerge Condition="$(PackageJsonDependenciesTailwindMerge) == ''">2.5.2</PackageJsonDependenciesTailwindMerge>
+    <PackageJsonDependenciesZustand Condition="$(PackageJsonDependenciesZustand) == ''">4.5.5</PackageJsonDependenciesZustand>
+    <PackageJsonDevdependenciesIanvsPrettierPluginSortImports Condition="$(PackageJsonDevdependenciesIanvsPrettierPluginSortImports) == ''">4.3.1</PackageJsonDevdependenciesIanvsPrettierPluginSortImports>
+    <PackageJsonDevdependenciesIconifyIconReact Condition="$(PackageJsonDevdependenciesIconifyIconReact) == ''">2.1.0</PackageJsonDevdependenciesIconifyIconReact>
+    <PackageJsonDevdependenciesIconifyIconsSolar Condition="$(PackageJsonDevdependenciesIconifyIconsSolar) == ''">1.2.3</PackageJsonDevdependenciesIconifyIconsSolar>
+    <PackageJsonDevdependenciesIconifyReact Condition="$(PackageJsonDevdependenciesIconifyReact) == ''">5.0.0</PackageJsonDevdependenciesIconifyReact>
+    <PackageJsonDevdependenciesTypesNode Condition="$(PackageJsonDevdependenciesTypesNode) == ''">20</PackageJsonDevdependenciesTypesNode>
+    <PackageJsonDevdependenciesTypesReact Condition="$(PackageJsonDevdependenciesTypesReact) == ''">18</PackageJsonDevdependenciesTypesReact>
+    <PackageJsonDevdependenciesTypesReactDom Condition="$(PackageJsonDevdependenciesTypesReactDom) == ''">18</PackageJsonDevdependenciesTypesReactDom>
+    <PackageJsonDevdependenciesEslint Condition="$(PackageJsonDevdependenciesEslint) == ''">8</PackageJsonDevdependenciesEslint>
+    <PackageJsonDevdependenciesEslintConfigNext Condition="$(PackageJsonDevdependenciesEslintConfigNext) == ''">14.2.5</PackageJsonDevdependenciesEslintConfigNext>
+    <PackageJsonDevdependenciesPostcss Condition="$(PackageJsonDevdependenciesPostcss) == ''">8</PackageJsonDevdependenciesPostcss>
+    <PackageJsonDevdependenciesPrettier Condition="$(PackageJsonDevdependenciesPrettier) == ''">3.3.3</PackageJsonDevdependenciesPrettier>
+    <PackageJsonDevdependenciesTailwindcss Condition="$(PackageJsonDevdependenciesTailwindcss) == ''">3.4.10</PackageJsonDevdependenciesTailwindcss>
+    <PackageJsonDevdependenciesTypescript Condition="$(PackageJsonDevdependenciesTypescript) == ''">5</PackageJsonDevdependenciesTypescript>
+  </PropertyGroup>
+</Project>
