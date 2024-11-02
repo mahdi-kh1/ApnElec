@@ -30,9 +30,9 @@ export default function DashboardLayout({
   }, [router]);
 
   // Don't render the dashboard if there's no user
-  if (!currentUser) {
-    return null;
-  }
+  // if (!currentUser) {
+  //   return null;
+  // }
 
   return (
     <div className="flex h-screen bg-background">
