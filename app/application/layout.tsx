@@ -1,8 +1,11 @@
+// ApplicationLayout.tsx
+
 "use client";
 
 import { Suspense } from "react";
 import Navbar from "@/components/application/Navbar";
-import Footer from "@/components/Footer";
+import Footer from "@/components/application/Footer";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 export default function ApplicationLayout({
   children,
@@ -10,14 +13,12 @@ export default function ApplicationLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
-      <Suspense fallback={<div className="h-16 bg-slate-100 " />}>
+    <div className="bg-gradient-to-r from-blue-50 to-gray-100 text-gray-900 min-h-screen">
+      <Suspense fallback={<LoadingAnimation />}>
         <Navbar />
       </Suspense>
-      <main className="min-h-screen">
-        {children}
-      </main>
+      <main className="min-h-screen">{children}</main>
       <Footer />
-    </>
+    </div>
   );
 }
