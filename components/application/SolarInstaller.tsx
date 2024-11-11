@@ -85,7 +85,7 @@ const SolarInstaller = () => {
             <span className="text-2xl font-semibold text-gray-600">APN Elec Solar</span>
           </div>
           <p className="text-xl text-gray-600">
-            Your local, independent solar installation experts. Reduce your carbon footprint and save money with APN Elec's professional solar PV installation services.
+            Your local, independent solar installation experts. Reduce your carbon footprint and save money with APN Elec&apos;s professional solar PV installation services.
           </p>
         </div>
         

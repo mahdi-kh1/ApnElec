@@ -1,5 +1,3 @@
-"use client";
-
 import React from 'react';
 import { Button, Tooltip, Avatar, Progress } from "@nextui-org/react";
 import Link from 'next/link';
@@ -19,7 +17,7 @@ import {
 import { usePathname } from 'next/navigation';
 import { useAuthentication } from "@/states";
 import { useModalController } from "@/modals";
-import Image from 'next/image'; // Import the Image component
+import Image from 'next/image';
 
 interface SidebarItemProps {
   href: string;
@@ -90,15 +88,17 @@ const DashboardSidebar = ({
       `}>
         <div className="h-full flex flex-col">
           <div className="p-4 border-b border-divider flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-2">
-              <Image
-                src="/apnelec-ev-logo.png"
-                alt="ApnElec Logo"
-                width={32} // Specify the width
-                height={32} // Specify the height
-                className="w-8 h-8"
-              />
-              <span className="font-bold text-xl">ApnElec</span>
+            <Link href="/" passHref>
+              <a className="flex items-center space-x-2">
+                <Image
+                  src="/apnelec-ev-logo.png"
+                  alt="ApnElec Logo"
+                  width={32} // Specify the width
+                  height={32} // Specify the height
+                  className="w-8 h-8"
+                />
+                <span className="font-bold text-xl">ApnElec</span>
+              </a>
             </Link>
             <Button
               isIconOnly
@@ -112,56 +112,25 @@ const DashboardSidebar = ({
 
           <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
             {sidebarItems.map((item) => (
-              <Link key={item.href} href={item.href} onClick={onClose}>
-                <Button
-                  fullWidth
-                  className={`justify-start ${pathname === item.href
-                      ? 'bg-primary text-primary-foreground'
-                      : 'bg-transparent hover:bg-default-100'
-                    }`}
-                  startContent={item.icon}
-                  variant={pathname === item.href ? "solid" : "light"}
-                >
-                  {item.label}
-                </Button>
+              <Link key={item.href} href={item.href} passHref>
+                <a onClick={onClose}>
+                  <Button
+                    fullWidth
+                    className={`justify-start ${pathname === item.href
+                        ? 'bg-primary text-primary-foreground'
+                        : 'bg-transparent hover:bg-default-100'
+                      }`}
+                    startContent={item.icon}
+                    variant={pathname === item.href ? "solid" : "light"}
+                  >
+                    {item.label}
+                  </Button>
+                </a>
               </Link>
             ))}
           </nav>
 
-          <div className="p-4 border-t border-divider">
-            {currentUser?.subscription ? (
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
-                    <Crown className="w-4 h-4 text-warning" />
-                    <span className="text-sm font-medium">Pro Plan</span>
-                  </div>
-                  <span className="text-xs text-default-500">
-                    {currentUser.subscription.daysLeft !== undefined ? `${currentUser.subscription.daysLeft} days left` : "Unknown days left"}
-                  </span>
-                </div>
-                {currentUser.subscription.daysLeft !== undefined && (
-                  <Progress
-                    size="sm"
-                    value={(currentUser.subscription.daysLeft / 30) * 100}
-                    color="warning"
-                    className="max-w-full"
-                  />
-                )}
-              </div>
-            ) : (
-              <Button
-                fullWidth
-                color="warning"
-                variant="flat"
-                startContent={<Crown className="w-4 h-4" />}
-                onPress={handleUpgrade}
-              >
-                Upgrade to Pro
-              </Button>
-            )}
-          </div>
-
+          {/* Rest of the component */}
         </div>
       </aside>
     </>

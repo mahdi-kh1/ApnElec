@@ -24,7 +24,7 @@ export default function AboutPage() {
             We are MCS approved, a mark of quality assurance in the renewable energy industry. Additionally, we are members of RECC (Renewable Energy Consumer Code), ensuring transparent services and a positive customer experience.
           </p>
           <p className="text-lg text-gray-600">
-            To provide peace of mind, every installation is covered by IWA Deposit and Guarantee Protection, ensuring a minimum of two years' coverage after commissioning.
+            To provide peace of mind, every installation is covered by IWA Deposit and Guarantee Protection, ensuring a minimum of two years coverage after commissioning.
           </p>
         </div>
 
@@ -35,7 +35,7 @@ export default function AboutPage() {
           </div>
           <div className="w-full md:w-1/2 p-2">
             <p className="text-lg mb-4 text-gray-600">
-              APN Elec is not just about installations—it's about making a difference. We are committed to offering the highest quality electrical and solar solutions, while continuously innovating to meet the challenges of a changing world.
+              APN Elec is not just about installations—it&apos;s about making a difference. We are committed to offering the highest quality electrical and solar solutions, while continuously innovating to meet the challenges of a changing world.
             </p>
             <p className="text-lg mb-4 text-gray-600">
               Our experts are certified and always updated with the latest regulations and technologies. By focusing on both energy efficiency and environmental sustainability, we aim to contribute to a greener, more energy-efficient future.

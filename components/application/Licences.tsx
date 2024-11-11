@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 const licenses = [
@@ -68,7 +69,7 @@ const LicenseSection = () => {
           {licenses.map((license, index) => (
             <div key={index} className="bg-white rounded-lg shadow-lg p-4 text-center">
               <a href={license.link} target="_blank" rel="noopener noreferrer">
-                <img 
+                <Image
                   src={license.imgSrc} 
                   alt={`${license.title} Logo`} 
                   className="mb-4 w-full h-16 object-contain mx-auto"
