@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '@nextui-org/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import Image from 'next/image'; // Import the Image component
+import Image from 'next/image'; 
 
 const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -52,9 +52,8 @@ const HeroSlider = () => {
           <Image
             src={slide.image}
             alt={slide.title}
-            layout="fill" // Use fill layout to cover the parent element
-            objectFit="cover" // Cover the container while maintaining aspect ratio
-            className="w-full h-full"
+            fill // New property for fill layout in Next.js 13
+            className="object-cover w-full h-full" // Use CSS class to cover the container
           />
           <div className="absolute inset-0 bg-black bg-opacity-40">
             <div className="container mx-auto h-full flex items-center px-4">

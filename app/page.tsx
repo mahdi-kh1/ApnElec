@@ -1,18 +1,6 @@
-"use client"
-import HeroSlider from '@/components/application/HeroSlider';
-import Navbar from '@/components/application/Navbar';
-import ServicesSection from '@/components/application/ServicesSection';
-import TestimonialsSection from '@/components/application/TestimonialsSection';
+// app/page.tsx
+import { redirect } from 'next/navigation';
 
-export default function Home() {
-  return (
-  <>
-  <Navbar />
-    <div className='relative -mt-24'>
-      <HeroSlider />
-      <ServicesSection />
-      <TestimonialsSection />
-    </div>
-  </>
-  );
+export default function HomePage() {
+  redirect('/application');
 }
