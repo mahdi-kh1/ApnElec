@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useAuthentication } from "@/states";
 import DashboardSidebar from "@/components/dashboard/sidebar";
 import DashboardHeader from "@/components/dashboard/header";
+import Loading from "../Loading";
 
 export default function DashboardLayout({
   children,
@@ -44,7 +45,7 @@ export default function DashboardLayout({
         <DashboardHeader onMenuClick={() => setIsSidebarOpen(true)} />
         <main className="flex-1 overflow-auto p-4 md:p-6 bg-default-50">
           <div className="max-w-7xl mx-auto">
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={Loading()}>
               {children}
             </Suspense>
           </div>

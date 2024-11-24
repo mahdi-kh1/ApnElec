@@ -70,6 +70,8 @@ const LicenseSection = () => {
             <div key={index} className="bg-white rounded-lg shadow-lg p-4 text-center">
               <a href={license.link} target="_blank" rel="noopener noreferrer">
                 <Image
+                  width={256}
+                  height={256}
                   src={license.imgSrc} 
                   alt={`${license.title} Logo`} 
                   className="mb-4 w-full h-16 object-contain mx-auto"

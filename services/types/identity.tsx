@@ -75,6 +75,7 @@ export interface SubscriptionType {
   expires: Date; // Subscription expiration date
   daysLeft?: number; // Optional days left until expiration
 }
+
 // User Session Model with Subscription
 export type UserSessionModel = UserProfileModel & {
   tokenType: string;
