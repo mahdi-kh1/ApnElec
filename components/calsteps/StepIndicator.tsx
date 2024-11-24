@@ -1,39 +1,17 @@
-// StepIndicator.tsx
-import React from 'react';
-import { Home, Building, ClipboardCheck } from 'lucide-react'; // Import icons
+import { ArrowRight } from "lucide-react";
 
-// Define the step types
-interface Step {
-  name: string;
-  icon: JSX.Element;
-}
-
-const steps: Step[] = [
-  { name: 'Customer Details', icon: <Home /> },
-  { name: 'Installation Details', icon: <Building /> },
-  { name: 'Results', icon: <ClipboardCheck /> },
-];
-
-interface StepIndicatorProps {
-  currentStep: number;
-}
-
-const StepIndicator: React.FC<StepIndicatorProps> = ({ currentStep }) => {
+export default function StepIndicator({ currentStep }: { currentStep: number }) {
   return (
-    <div className="flex justify-around mb-5">
-      {steps.map((step, index) => (
-        <div
-          key={index}
-          className={`flex flex-col items-center cursor-pointer ${
-            currentStep === index + 1 ? 'text-indigo-600' : 'text-gray-500'
-          }`}
-        >
-          <div className="text-2xl">{step.icon}</div>
-          <span className="text-sm">{step.name}</span>
+    <div className="flex justify-center items-center space-x-4">
+      {[1, 2, 3].map((step) => (
+        <div key={step} className={`step ${currentStep >= step ? "completed" : ""}`}>
+          {step === currentStep ? (
+            <ArrowRight className="w-6 h-6 text-blue-500" />
+          ) : (
+            <span>{step}</span>
+          )}
         </div>
       ))}
     </div>
   );
-};
-
-export default StepIndicator;
+}

@@ -1,49 +1,23 @@
-// Final Page: Calculation & Results
-interface CustomerDetails {
-    name: string;
-    address: string;
-    telephone: string;
-    email: string;
-    installationAddress: string;
-}
+import { useSolarCalculatorStore } from "@/states/solarcalculator";
 
-interface InstallationDetails {
-    postcode: string;
-    buildingUse: string;
-    propertyType: string;
-    age: string;
-    listedBuilding: boolean;
-    conservationArea: boolean;
-    annualConsumption: string; // You may need to parse this to number later
-    systemSize: string;        // Same here for systemSize
-}
+export default function Results({ prevStep }: { prevStep: () => void }) {
+  const { interimResults } = useSolarCalculatorStore();
 
-interface ResultsProps {
-    customerDetails: CustomerDetails;
-    installationDetails: InstallationDetails;
-}
-
-export default function Results({ customerDetails, installationDetails }: ResultsProps) {
-    const { name, address } = customerDetails;
-    const { systemSize, annualConsumption } = installationDetails;
-
-    // Convert to numbers for calculations
-    const systemSizeNum = parseFloat(systemSize);
-    const annualConsumptionNum = parseFloat(annualConsumption);
-
-    const estimatedAnnualOutput = systemSizeNum * 1000;
-    const selfConsumption = (0.43 * estimatedAnnualOutput).toFixed(2);
-    const gridIndependence = ((parseFloat(selfConsumption) / annualConsumptionNum) * 100).toFixed(2);
-
-    return (
-        <div className="flex flex-col gap-4">
-            <h2 className="text-lg font-bold">Results</h2>
-            <p><strong>Customer Name:</strong> {name}</p>
-            <p><strong>Address:</strong> {address}</p>
-            <p><strong>System Size:</strong> {systemSize} kWp</p>
-            <p><strong>Estimated Annual Output:</strong> {estimatedAnnualOutput} kWh</p>
-            <p><strong>Self-Consumption:</strong> {selfConsumption} kWh</p>
-            <p><strong>Grid Independence:</strong> {gridIndependence} %</p>
-        </div>
-    );
+  return (
+    <div>
+      <h2 className="text-2xl mb-4">Results</h2>
+      {interimResults ? (
+        <>
+          <p>Total Output: {interimResults.totalOutput} kWh</p>
+          <p>Financial Savings: ${interimResults.financialSavings}</p>
+          <p>CO2 Savings: {interimResults.co2Savings} kg/year</p>
+        </>
+      ) : (
+        <p>Loading results...</p>
+      )}
+      <button className="bg-blue-500 text-white px-4 py-2 mt-4" onClick={prevStep}>
+        Back
+      </button>
+    </div>
+  );
 }

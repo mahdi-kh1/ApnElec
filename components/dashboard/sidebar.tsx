@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Button, Tooltip, Avatar, Progress } from "@nextui-org/react";
 import Link from 'next/link';
@@ -12,9 +14,11 @@ import {
   BarChart,
   Crown,
   Menu,
-  X
+  X,
+  FileText,
+  User
 } from 'lucide-react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useAuthentication } from "@/states";
 import { useModalController } from "@/modals";
 import Image from 'next/image';
@@ -33,8 +37,10 @@ const DashboardSidebar = ({
   onClose: () => void;
 }) => {
   const pathname = usePathname();
+  const router = useRouter();
   const { user: currentUser } = useAuthentication();
   const { setModalId } = useModalController();
+  const [isLoading, setIsLoading] = React.useState<string | null>(null);
 
   const sidebarItems: SidebarItemProps[] = [
     {
@@ -61,8 +67,38 @@ const DashboardSidebar = ({
       href: "/dashboard/billing",
       icon: <CreditCard size={20} />,
       label: "Billing"
+    },
+    // New entries
+    {
+      href: "/dashboard/profile",
+      icon: <User size={20} />,
+      label: "Profile"
+    },
+    {
+      href: "/dashboard/blogs",
+      icon: <FileText size={20} />,
+      label: "Blogs"
+    },
+    {
+      href: "/dashboard/users",
+      icon: <Users size={20} />,
+      label: "Users List"
     }
   ];
+
+  // Prefetch all routes on component mount
+  React.useEffect(() => {
+    sidebarItems.forEach((item) => {
+      router.prefetch(item.href);
+    });
+  }, [router]);
+
+  const handleNavigation = async (href: string) => {
+    setIsLoading(href);
+    onClose();
+    await router.push(href);
+    setIsLoading(null);
+  };
 
   const handleUpgrade = () => {
     setModalId("upgrade-plan");
@@ -77,7 +113,7 @@ const DashboardSidebar = ({
           onClick={onClose}
         />
       )}
-
+      
       {/* Sidebar */}
       <aside className={`
         fixed top-0 bottom-0 left-0 z-50
@@ -88,18 +124,20 @@ const DashboardSidebar = ({
       `}>
         <div className="h-full flex flex-col">
           <div className="p-4 border-b border-divider flex items-center justify-between">
-            <Link href="/" passHref>
-              <a className="flex items-center space-x-2">
-                <Image
-                  src="/apnelec-ev-logo.png"
-                  alt="ApnElec Logo"
-                  width={32} // Specify the width
-                  height={32} // Specify the height
-                  className="w-8 h-8"
-                />
-                <span className="font-bold text-xl">ApnElec</span>
-              </a>
-            </Link>
+            <button 
+              onClick={() => handleNavigation('/')}
+              className="flex items-center space-x-2"
+            >
+              <Image
+                src="/apnelec-ev-logo.png"
+                alt="ApnElec Logo"
+                width={32}
+                height={32}
+                className="w-8 h-8"
+                priority
+              />
+              <span className="font-bold text-xl">ApnElec</span>
+            </button>
             <Button
               isIconOnly
               variant="light"
@@ -112,25 +150,44 @@ const DashboardSidebar = ({
 
           <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
             {sidebarItems.map((item) => (
-              <Link key={item.href} href={item.href} passHref>
-                <a onClick={onClose}>
-                  <Button
-                    fullWidth
-                    className={`justify-start ${pathname === item.href
-                        ? 'bg-primary text-primary-foreground'
-                        : 'bg-transparent hover:bg-default-100'
-                      }`}
-                    startContent={item.icon}
-                    variant={pathname === item.href ? "solid" : "light"}
-                  >
-                    {item.label}
-                  </Button>
-                </a>
-              </Link>
+              <Button
+                key={item.href}
+                fullWidth
+                className={`justify-start relative ${
+                  pathname === item.href
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-transparent hover:bg-default-100'
+                }`}
+                startContent={item.icon}
+                variant={pathname === item.href ? "solid" : "light"}
+                onClick={() => handleNavigation(item.href)}
+                isDisabled={isLoading === item.href}
+              >
+                {item.label}
+                {isLoading === item.href && (
+                  <Progress
+                    size="sm"
+                    isIndeterminate
+                    aria-label="Loading..."
+                    className="absolute bottom-0 left-0 right-0"
+                  />
+                )}
+              </Button>
             ))}
           </nav>
 
-          {/* Rest of the component */}
+          {/* Optional: Add upgrade button or user section at the bottom */}
+          <div className="p-4 border-t border-divider">
+            <Button
+              fullWidth
+              color="primary"
+              variant="ghost"
+              startContent={<Crown size={20} />}
+              onClick={handleUpgrade}
+            >
+              Upgrade Plan
+            </Button>
+          </div>
         </div>
       </aside>
     </>
